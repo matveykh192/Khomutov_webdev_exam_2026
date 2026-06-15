@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">
+
+    Рецензия на книгу
+
+    "{{ book.title }}"
+
+</h2>
+
+<form method="post">
+
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+
+        {{ form.rating.label(class="form-label") }}
+
+        {{ form.rating(class="form-select") }}
+
+    </div>
+
+    <div class="mb-3">
+
+        {{ form.text.label(class="form-label") }}
+
+        {{ form.text(
+            class="form-control",
+            rows=10
+        ) }}
+
+    </div>
+
+    <button
+        class="btn btn-success"
+        type="submit">
+
+        Сохранить
+
+    </button>
+
+</form>
+
+{% endblock %}

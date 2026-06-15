@@ -1,0 +1,111 @@
+body {
+    background: linear-gradient(
+        135deg,
+        #eef2f7,
+        #dbe7f3
+    );
+    min-height: 100vh;
+}
+
+.navbar {
+    background: #212529 !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,.15);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.card {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    transition: all .25s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px rgba(0,0,0,.12);
+}
+
+.card-header {
+    background: white;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.table {
+    background: white;
+    border-radius: 15px;
+}
+
+.table th {
+    background-color: #f8fafc;
+    font-weight: 600;
+}
+
+.badge {
+    padding: .45rem .7rem;
+    border-radius: 8px;
+}
+
+.btn {
+    border-radius: 10px;
+    transition: .2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.pagination .page-link {
+    border-radius: 8px;
+    margin: 0 3px;
+}
+
+.book-cover {
+    max-height: 400px;
+    width: auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.15);
+}
+
+.review-card {
+    border-left: 5px solid #0d6efd;
+}
+
+.rating {
+    color: #ffc107;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+footer {
+    margin-top: 80px;
+    padding: 25px;
+    text-align: center;
+    color: #6c757d;
+    font-size: .95rem;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+}
+
+.alert {
+    border: none;
+    border-radius: 12px;
+}
+
+.modal-content {
+    border-radius: 15px;
+    border: none;
+}
+
+img {
+    border-radius: 10px;
+}

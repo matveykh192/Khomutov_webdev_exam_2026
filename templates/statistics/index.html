@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    Статистика
+</h2>
+
+<div class="card mb-4">
+
+    <div class="card-header">
+        Фильтр по датам
+    </div>
+
+    <div class="card-body">
+
+        <form method="get">
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+                        Дата начала
+                    </label>
+
+                    <input
+                        type="date"
+                        name="start_date"
+                        class="form-control"
+                        value="{{ start_date or '' }}">
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+                        Дата окончания
+                    </label>
+
+                    <input
+                        type="date"
+                        name="end_date"
+                        class="form-control"
+                        value="{{ end_date or '' }}">
+
+                </div>
+
+                <div class="col-md-4 d-flex align-items-end">
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary">
+
+                        Применить
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<ul class="nav nav-tabs">
+
+    <li class="nav-item">
+
+        <a
+            class="nav-link active"
+            href="#visits"
+            data-bs-toggle="tab">
+
+            Журнал действий
+
+        </a>
+
+    </li>
+
+    <li class="nav-item">
+
+        <a
+            class="nav-link"
+            href="#books"
+            data-bs-toggle="tab">
+
+            Просмотры книг
+
+        </a>
+
+    </li>
+
+</ul>
+
+<div class="tab-content mt-3">
+
+    <div
+        class="tab-pane fade show active"
+        id="visits">
+
+        <a
+            class="btn btn-success mb-3"
+            href="{{ url_for('statistics.export_visits') }}">
+
+            Экспорт CSV
+
+        </a>
+
+        <table class="table table-striped">
+
+            <thead>
+
+            <tr>
+
+                <th>Пользователь</th>
+                <th>Книга</th>
+                <th>Дата</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for visit in visits %}
+
+            <tr>
+
+                <td>
+
+                    {% if visit.user %}
+
+                        {{ visit.user.full_name }}
+
+                    {% else %}
+
+                        Гость
+
+                    {% endif %}
+
+                </td>
+
+                <td>
+
+                    {{ visit.book.title }}
+
+                </td>
+
+                <td>
+
+                    {{ visit.viewed_at.strftime('%d.%m.%Y %H:%M') }}
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div
+        class="tab-pane fade"
+        id="books">
+
+        <a
+            class="btn btn-success mb-3"
+            href="{{ url_for('statistics.export_books') }}">
+
+            Экспорт CSV
+
+        </a>
+
+        <table class="table table-striped">
+
+            <thead>
+
+            <tr>
+
+                <th>Книга</th>
+                <th>Просмотры</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for book, views in books_stats %}
+
+            <tr>
+
+                <td>
+
+                    {{ book.title }}
+
+                </td>
+
+                <td>
+
+                    {{ views }}
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}
